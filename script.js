@@ -1,9 +1,14 @@
-async function WeatherApp(city) {
-  let API_KEY = `aa83882a9027ce69114601550b9f93a0`;
-  let API_Url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+function weatherApp(city) {
+  const API_key = `aa83882a9027ce69114601550b9f93a0`;
+  const API_Url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`;
 
-  let rowData = await fetch(API_Url);
-  let realData = await rowData.json();
-  console.log(realData.main);
+  fetch(API_Url)
+    .then((rowData) => {
+      return rowData.json();
+    })
+    .then((realData) => {
+      console.log(realData);
+    });
 }
-WeatherApp("satara");
+
+weatherApp("bhopal");
